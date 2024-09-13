@@ -1,0 +1,297 @@
+package harguns_calci;
+
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import java.awt.Color;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.SystemColor;
+
+public class Calculatior {
+
+    private JFrame frame;
+    private JTextField textField;
+    double first, second;
+    String operation;
+
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Calculatior window = new Calculatior();
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    /**
+     * Create the application.
+     */
+    public Calculatior() {
+        initialize();
+    }
+
+    /**
+     * Initialize the contents of the frame.
+     */
+    private void initialize() {
+        frame = new JFrame();
+        frame.getContentPane().setBackground(Color.GRAY);
+        frame.setBounds(100, 100, 280, 327);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+
+        textField = new JTextField();
+        textField.setFont(new Font("Microsoft PhagsPa", Font.BOLD, 17));
+        textField.setForeground(SystemColor.inactiveCaptionBorder);
+        textField.setBackground(Color.BLACK);
+        textField.setBounds(0, 0, 264, 59);
+        frame.getContentPane().add(textField);
+        textField.setColumns(10);
+
+        JButton btnNewButton = new JButton("AC");
+        btnNewButton.setBackground(Color.ORANGE);
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                textField.setText(null);
+            }
+        });
+        btnNewButton.setBounds(10, 63, 51, 30);
+        frame.getContentPane().add(btnNewButton);
+
+        JButton btnBc = new JButton("BC");
+        btnBc.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String backSpace = null;
+
+                if (textField.getText().length() > 0) {
+                    StringBuilder str = new StringBuilder(textField.getText());
+                    str.deleteCharAt(textField.getText().length() - 1);
+                    backSpace = str.toString();
+                    textField.setText(backSpace);
+                }
+            }
+        });
+        btnBc.setBounds(71, 63, 51, 30);
+        frame.getContentPane().add(btnBc);
+
+        JButton button_1 = new JButton("%");
+        button_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                first = Double.parseDouble(textField.getText());
+                textField.setText("");
+                operation = "%";
+            }
+        });
+        button_1.setBounds(138, 63, 51, 30);
+        frame.getContentPane().add(button_1);
+
+        JButton button_2 = new JButton("9");
+        button_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_2.getText();
+                textField.setText(number);
+            }
+        });
+        button_2.setBounds(10, 110, 51, 30);
+        frame.getContentPane().add(button_2);
+
+        JButton button_3 = new JButton("6");
+        button_3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_3.getText();
+                textField.setText(number);
+            }
+        });
+        button_3.setBounds(10, 155, 51, 30);
+        frame.getContentPane().add(button_3);
+
+        JButton button_4 = new JButton("5");
+        button_4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_4.getText();
+                textField.setText(number);
+            }
+        });
+        button_4.setBounds(71, 155, 51, 30);
+        frame.getContentPane().add(button_4);
+
+        JButton button_5 = new JButton("8");
+        button_5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_5.getText();
+                textField.setText(number);
+            }
+        });
+        button_5.setBounds(71, 110, 51, 30);
+        frame.getContentPane().add(button_5);
+
+        JButton button_6 = new JButton("7");
+        button_6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_6.getText();
+                textField.setText(number);
+            }
+        });
+        button_6.setBounds(138, 110, 51, 30);
+        frame.getContentPane().add(button_6);
+
+        JButton button_7 = new JButton("4");
+        button_7.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_7.getText();
+                textField.setText(number);
+            }
+        });
+        button_7.setBounds(138, 155, 51, 30);
+        frame.getContentPane().add(button_7);
+
+        JButton button_8 = new JButton("3");
+        button_8.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_8.getText();
+                textField.setText(number);
+            }
+        });
+        button_8.setBounds(10, 203, 51, 30);
+        frame.getContentPane().add(button_8);
+
+        JButton button_9 = new JButton("/");
+        button_9.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                first = Double.parseDouble(textField.getText());
+                textField.setText("");
+                operation = "/";
+            }
+        });
+        button_9.setBounds(206, 63, 49, 30);
+        frame.getContentPane().add(button_9);
+
+        JButton button_11 = new JButton("0");
+        button_11.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_11.getText();
+                textField.setText(number);
+            }
+        });
+        button_11.setBounds(10, 247, 51, 30);
+        frame.getContentPane().add(button_11);
+
+        JButton button_13 = new JButton("^");
+        button_13.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                first = Double.parseDouble(textField.getText());
+                textField.setText("");
+                operation = "^";
+            }
+        });
+        button_13.setBounds(71, 247, 51, 30);
+        frame.getContentPane().add(button_13);
+
+        JButton button_14 = new JButton("1");
+        button_14.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_14.getText();
+                textField.setText(number);
+            }
+        });
+        button_14.setBounds(138, 203, 51, 30);
+        frame.getContentPane().add(button_14);
+
+        JButton button_15 = new JButton("2");
+        button_15.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String number = textField.getText() + button_15.getText();
+                textField.setText(number);
+            }
+        });
+        button_15.setBounds(71, 203, 51, 30);
+        frame.getContentPane().add(button_15);
+
+        JButton btnX = new JButton("+");
+        btnX.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                first = Double.parseDouble(textField.getText());
+                textField.setText("");
+                operation = "+";
+            }
+        });
+        btnX.setBounds(206, 110, 49, 30);
+        frame.getContentPane().add(btnX);
+
+        JButton button_16 = new JButton("-");
+        button_16.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+                first = Double.parseDouble(textField.getText());
+                textField.setText("");
+                operation = "-";
+            }
+        });
+        button_16.setBounds(206, 155, 49, 30);
+        frame.getContentPane().add(button_16);
+
+        JButton btnX_1 = new JButton("x");
+        btnX_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                first = Double.parseDouble(textField.getText());
+                textField.setText("");
+                operation = "*";
+            }
+        });
+        btnX_1.setBounds(206, 203, 49, 30);
+        frame.getContentPane().add(btnX_1);
+
+        JButton button_17 = new JButton("=");
+        button_17.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                double second = Double.parseDouble(textField.getText());
+                double result;
+
+                switch (operation) {
+                    case "+":
+                        result = first + second;
+                        break;
+                    case "-":
+                        result = first - second;
+                        break;
+                    case "*":
+                        result = first * second;
+                        break;
+                    case "/":
+                        // Handle division by zero
+                        if (second == 0) {
+                            textField.setText("Error");
+                            return;
+                        }
+                        result = first / second;
+                        break;
+                    case "^":
+                        result = Math.pow(first, second);
+                        break;
+                    case "%":
+                        result = first % second;
+                        break;
+                    default:
+                        result = 0;
+                        break;
+                }
+                String answer = String.format("%.2f %s %.2f = %.2f", first, operation, second, result);
+                textField.setText(answer);
+            }
+        });
+
+        button_17.setForeground(Color.BLACK);
+        button_17.setBackground(Color.WHITE);
+        button_17.setBounds(138, 247, 117, 30);
+        frame.getContentPane().add(button_17);
+    }
+}
